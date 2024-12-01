@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjadvju104v71"]
+
+[ext_resource type="Script" path="res://addons/elog/tests/floating_panel.gd" id="1_knyks"]
+[ext_resource type="Texture2D" uid="uid://dppdbnc6v1k64" path="res://addons/elog/images/frame1_48.png" id="2_6fngo"]
+
+[node name="FloatingPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 205.0
+offset_bottom = 266.0
+script = ExtResource("1_knyks")
+metadata/_edit_group_ = true
+
+[node name="TopBar" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="BG" type="NinePatchRect" parent="."]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6fngo")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="ResizeCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 12
+
+[node name="ColorRect" type="ColorRect" parent="ResizeCorner"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 7.0
+offset_bottom = 7.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[connection signal="gui_input" from="TopBar" to="." method="_on_top_bar_gui_input"]
+[connection signal="gui_input" from="ResizeCorner" to="." method="_on_resize_corner_gui_input"]

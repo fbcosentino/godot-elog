@@ -1,0 +1,537 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhnpfweqem72a"]
+
+[ext_resource type="Script" path="res://addons/elog/tests/elog_console.gd" id="1_6xcnw"]
+[ext_resource type="Script" path="res://addons/elog/resources/elog.gd" id="1_m2pv6"]
+[ext_resource type="PackedScene" uid="uid://bjadvju104v71" path="res://addons/elog/tests/floating_panel.tscn" id="3_0s8km"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmt5y"]
+bg_color = Color(0, 0, 0, 0.25098)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="ElogConsole" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xcnw")
+metadata/_edit_lock_ = true
+
+[node name="Elog" type="Node" parent="."]
+script = ExtResource("1_m2pv6")
+
+[node name="Objects" parent="." instance=ExtResource("3_0s8km")]
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 214.0
+offset_bottom = 273.0
+
+[node name="Label" type="Label" parent="Objects"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Known Objects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="Objects"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+
+[node name="Facts" parent="." instance=ExtResource("3_0s8km")]
+offset_left = 9.0
+offset_top = 287.0
+offset_right = 214.0
+offset_bottom = 624.0
+
+[node name="Label" type="Label" parent="Facts"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Facts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="Facts"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+
+[node name="Rules" parent="." instance=ExtResource("3_0s8km")]
+offset_left = 933.0
+offset_top = 10.0
+offset_right = 1138.0
+offset_bottom = 603.0
+
+[node name="Label" type="Label" parent="Rules"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Rules"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="Rules"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+
+[node name="Console" parent="." instance=ExtResource("3_0s8km")]
+offset_left = 232.0
+offset_top = 8.0
+offset_right = 912.0
+offset_bottom = 608.0
+
+[node name="Label" type="Label" parent="Console"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Console
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Console"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -41.0
+offset_right = -10.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+placeholder_text = "enter Elog command here, e.g. \"some_fact[argument1,argument2].\" or \"my_rule(A, B):- some_fact[A,C], some_fact[C,B].\" (confirm with ENTER)"
+
+[node name="LabelResult" type="Label" parent="Console"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = -10.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Result"
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Console"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 71.0
+offset_right = -10.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Table" type="ItemList" parent="Console/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_constants/v_separation = 8
+theme_override_constants/h_separation = 12
+theme_override_font_sizes/font_size = 12
+theme_override_styles/panel = SubResource("StyleBoxFlat_jmt5y")
+same_column_width = true
+
+[node name="RuleDetails" parent="." instance=ExtResource("3_0s8km")]
+visible = false
+custom_minimum_size = Vector2(400, 400)
+offset_left = 250.0
+offset_top = 26.0
+offset_right = 900.0
+offset_bottom = 586.0
+
+[node name="BG2" type="ColorRect" parent="RuleDetails"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 20.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.784314)
+metadata/_edit_lock_ = true
+
+[node name="BtnClose" type="Button" parent="RuleDetails"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 24.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 10
+text = "X"
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="RuleDetails"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Rule
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="LabelRuleName" type="Label" parent="RuleDetails"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 57.0
+offset_right = -20.0
+offset_bottom = 80.0
+grow_horizontal = 2
+text = "Rule Name"
+text_overrun_behavior = 3
+
+[node name="Label" type="Label" parent="RuleDetails/LabelRuleName"]
+layout_mode = 0
+offset_top = -17.0
+offset_right = 62.0
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 12
+text = "Rule name"
+
+[node name="LabelArgsProvided" type="Label" parent="RuleDetails"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 113.0
+offset_right = 142.0
+offset_bottom = 136.0
+text = "0"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Label" type="Label" parent="RuleDetails/LabelArgsProvided"]
+layout_mode = 0
+offset_top = -17.0
+offset_right = 62.0
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 12
+text = "Provided Arguments"
+
+[node name="LabelArgsInternal" type="Label" parent="RuleDetails"]
+layout_mode = 1
+offset_left = 182.0
+offset_top = 113.0
+offset_right = 296.0
+offset_bottom = 136.0
+text = "0"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Label" type="Label" parent="RuleDetails/LabelArgsInternal"]
+layout_mode = 0
+offset_top = -17.0
+offset_right = 62.0
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 12
+text = "Internal Arguments"
+
+[node name="LabelRuleDefinition" type="Label" parent="RuleDetails"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 169.0
+offset_right = -20.0
+offset_bottom = 232.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Rule def"
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Label" type="Label" parent="RuleDetails/LabelRuleDefinition"]
+layout_mode = 0
+offset_top = -17.0
+offset_right = 62.0
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 12
+text = "Rule definition
+"
+
+[node name="LabelStructure" type="Label" parent="RuleDetails"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 232.0
+offset_right = 107.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 12
+text = "Structure
+"
+
+[node name="StructureTree" type="Tree" parent="RuleDetails"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 252.0
+offset_right = -25.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/title_button_font_size = 10
+columns = 3
+column_titles_visible = true
+
+[node name="Help" parent="." instance=ExtResource("3_0s8km")]
+custom_minimum_size = Vector2(400, 400)
+offset_left = 143.0
+offset_top = 41.0
+offset_right = 1008.0
+offset_bottom = 602.0
+
+[node name="BG2" type="ColorRect" parent="Help"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 20.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.784314)
+metadata/_edit_lock_ = true
+
+[node name="BtnClose" type="Button" parent="Help"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 24.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 10
+text = "X"
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Help"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Text" type="RichTextLabel" parent="Help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = -10.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 10
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 14
+bbcode_enabled = true
+text = "
+[center][b]ELOG HELP[/b][/center]
+
+
+[i](For a better understanding on the theory used by Elog, please read about inference machines such as PROLOG.)[/i]
+
+There are [i]facts[/i] and [i]rules[/i]. 
+- Facts are immutable and independent: if apple is a fruit, apple is always a fruit, to the end of times.
+- Rules are logical inferences based on facts or other rules. E.g. if you have a fact defining something is a person, and another fact defining if a person is an earthling, you can have a rule \"alien\" defined as \"is a person, and is not an earthling\". 
+
+Think of facts as variables, and rules as expressions in an \"IF\" block.
+
+You can perform [i]queries[/i], which have the same syntax of rules, but instead of just evaluating as true or false, they return all the possible data combinations which satisfy the condition (exactly like a SQL SELECT clause).
+
+
+        ==== FACTS AND OBJECTS ====
+
+To define a fact, declare the name of the fact, and a sequence of values as arguments in square brackets followed by a period. The values MUST start with lower case (if you need the values to be fancy strings, use a Dictionary and give the keys to Elog). The interpretation of the fact is up to you, Elog only cares about a combination of values linked to a keyword (order matters!). E.g., you can declare a fact named \"father\" with the values \"peter\" and \"mary\", and another fact with the same name, for \"peter\" and \"john\":
+        [code][color=#ffff99]father[peter,mary].[/color][/code]
+        [code][color=#ffff99]father[peter,john].[/color][/code]
+which your application can interpret as Peter being father to both Mary and John.
+Declaring facts also declares the objects used in the declarations, so the lines above will register objects \"peter\", \"mary\" and \"john\".
+
+Replace the period for an exclamation mark, and you are performing a query. If all arguments are provided as literals, it will return true or false (check this script to see the data formats returned). E.g.:
+        [code][color=#ffff99]father[peter,mary]?[/color][/code]
+returns true, while
+        [code][color=#ffff99]father[peter,ralph]?[/color][/code]
+returns false. (Undefined objects are valid, they just fail to satisfy the conditions.)
+
+You can replace any number of values for an open variable (identified by starting with an uppercase letter), and the result of the query will instead be the list of data sets which satisfy that fact. E.g.:
+        [code][color=#ffff99]father[peter,X]?[/color][/code]
+will return the list of values which satisfy X (interpreted as: all children of Peter), while
+        [code][color=#ffff99]father[X,Y]?[/color][/code]
+will return all pairs currently in the database for the fact \"father\" (interpreted in this hypothetical application as \"all father-child pairs\").
+
+
+        ==== RULES ====
+
+To define a rule, declare it similar to a function (a word, followed by arguments in round brackets), followed by \":- \" (colon, dash, space), and then by a rule expression (ended by a period). 
+
+The rule expression must be given in canonical form (sum of minterms), that is, one or more blocks (OR'ed together), where in each block, the terms are AND'ed together. Example, the expression \"A AND (B OR C)\", represented in sum of minterms, would be \"A AND B, OR A AND C\".
+As reminder, observe this: (AND AND AND AND...) OR (AND AND AND AND...) OR (AND AND AND AND...) OR ...
+There is never any deeper level than the outer \"OR\"s and their inner \"AND\"s.  
+
+ A term is either a fact or a rule. Inside a group (minterm), terms can be separated by an optional comma for better visibility. Separate groups (separate minterms) are necessarily separated by a semicolon.
+
+Example, if we have the fact \"parent[A, B]\", we can define the rule \"grandparent\" as:
+        [code][color=#ffff99]grandparent(A, B):- parent[A, X], parent[X, B].[/color][/code]
+The rule above has only one group (minterm), with two terms. These terms are AND'ed together (they must both be true for the rule to evaluate as true).
+Notice you can have intermediate internal variables (starting them with a capital letter), even if they don't show up in the head. Just be mindful of performance, as evaluating a rule with internal variables means each of them will be checked against every known object in nested loops.
+
+Another example, with two groups, would be if we have the facts \"father\" and \"mother\", and a rule \"parent\", defined as:
+        [code][color=#ffff99]parent(A, B):- mother[A, B]; father[A, B].[/color][/code]
+Each group has only one term (first group has only \"mother\", second has only \"father\"). The groups are OR'ed together: one group evaluating as true is enough for the entire rule to evaluate as true.
+
+For a more complex example: a patient must take medicine if they have a runny nose, and either have fever, or is sneezing but does not have an allegy (assuming we have the facts \"runny_nose\", \"fever\", \"sneezing\", \"alergy\" all with one argument for patient). So the condition \"runny nose AND ( fever OR (sneezing AND NOT allergy) )\" should be unpacked to minterms: \"(runny nose AND fever) OR (runny nose AND sneezing AND NOT allergy)\":
+        [code][color=#ffff99]must_take_medicine(Patient):- runny_nose(Patient), fever(Patient); runny_nose(Patient), sneezing(Patient), !allergy(Patient).[/color][/code]
+There are two groups: one with runny_nose and fever, and the other with runny_nose, sneezing and allergy negated. Notice arguments don't have to be single letters, they can be any identifier (same rules used for variable names in programming languages) as long as the first letter is uppercase (as the first letter being lowercase means it's an object). Also notice the exclamation mark to invert (negate) a term. Finally, notice the expression in a rule body can use round brackets for everything (regardless of being a fact or a rule), as they are identified automatically.
+
+
+        ==== QUERIES ====
+
+A query is a question made to the inference machine. You can provide direct values (objects) or open variables (starting with uppercase letters). Queries work the same way as the body of a rule (sum of minterms, etc). They are, in fact, compiled internally as a rule, except without the head (they start already after the \":- \") so they should be written identically to a rule body (the expression after \":- \").
+
+If all the arguments present in a query are objects, the result will be either true or false. E.g. the queries:
+        [code][color=#ffff99]father(peter, john)?[/color][/code]
+        [code][color=#ffff99]father(peter, alfred)?[/color][/code]
+would return true and false respectively.
+
+The query below will show if Peter needs to take medicine, given the conditions defined:
+        [code][color=#ffff99]must_take_medicine(peter)?[/color][/code]
+
+If there are open variables in a query, all the existing objects will be tested against the query to check which ones satisfy the condition. (Be mindful: rules can be defined based on other rules, which can also be based on other rules, etc, with no limit for the depth of the recursion. If those hidden rules deep down the logic also have internal variables, this implies another nested loop checking the objects for each level, which multiplies the processing. Impact on performance can be significant, so do not use this system in parts of your game/application which run every frame. Prefer to use it where it runs only sometimes, e.g. when triggering a dialogue.)
+
+
+E.g., the query below will show a list of all the grandchildren of Peter (\"X\" can be any identifier starting with an uppercase letter):
+        [code][color=#ffff99]grandparent(peter, X)?[/color][/code]
+
+While the query below will show a list of grandparents of Peter:
+        [code][color=#ffff99]grandparent(X, peter)?[/color][/code]
+
+The query below will show all the patients who need to take medicine, given the conditions defined:
+        [code][color=#ffff99]must_take_medicine(X)?[/color][/code]
+
+
+        ==== TEST SCENE ====
+
+This test scene has already some values created for you. Check the setup() method in this script to see how they were defined.
+
+You can double-click the values in the dialog boxes on both sides to check information on each element.
+
+  - Known Objects: double-clicking an object shows all the facts where this object can be found
+
+  - Facts: double-clicking a fact shows all the data linked to the fact (as if you queried it passing open variables to all arguments)
+
+  - Rules: double-clicking a rule shows the number of provided arguments in the head (the ones you give to it), the number of internal open variables, the string originally used to create it, and a tree structure showing the logic tree used to compute the rule result every time it's evaluated
+
+
+
+Thanks for reading and happy inference!
+fbcosentino 
+[code](github.com/fbcosentino)[/code]"
+
+[connection signal="item_activated" from="Objects/ItemList" to="." method="_on_objects_item_list_item_activated"]
+[connection signal="item_activated" from="Facts/ItemList" to="." method="_on_facts_item_list_item_activated"]
+[connection signal="item_activated" from="Rules/ItemList" to="." method="_on_rules_item_list_item_activated"]
+[connection signal="text_submitted" from="Console/LineEdit" to="." method="_on_input_text_submitted"]
+[connection signal="pressed" from="RuleDetails/BtnClose" to="." method="_on_rule_details_btn_close_pressed"]
+[connection signal="pressed" from="Help/BtnClose" to="." method="_on_help_btn_close_pressed"]
