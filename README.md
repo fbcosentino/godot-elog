@@ -130,3 +130,10 @@ The query below will show all the patients who need to take medicine, given the 
         must_take_medicine(X)?
 ```
 
+----
+
+## Test Scene with Console
+
+The addon comes with a test scene (`res://addons/elog/tests/elog_console.tscn`) with a help window explaining all the syntax, as well as an interactive console, with side boxes to inspect the internal data as you operate. the script in that scene also teaches how to call the API.
+
+![image](https://github.com/user-attachments/assets/6fa34cfb-16d1-4e5b-b485-9fad25c7cb60)
